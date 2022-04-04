@@ -1,9 +1,7 @@
 const Discord = require('discord.js')
 
 // Instanciar o ticket 
-function sendMessage(client) {
-    const ticketChannel = client.channels.cache.get('960355208683225129')
-
+function sendMessage(ticketChannel) {
     const embed = new Discord.MessageEmbed()
         .setColor('6d6ee8')
         .setDescription('Clique para abrir um novo ticket')

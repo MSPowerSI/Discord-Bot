@@ -1,4 +1,5 @@
 const ticket = require('../utils/ticket')
+const message = require('../utils/message')
 
 module.exports = async (client) => {
     console.log("Bot iniciado com sucesso!");
@@ -6,5 +7,8 @@ module.exports = async (client) => {
         type: "WATCHING"
     })
 
-    ticket.sendMessage(client);
+    const ticketChannel = client.channels.cache.get('960355208683225129')
+    message.clearChannel(ticketChannel)
+
+    ticket.sendMessage(ticketChannel);
 }
