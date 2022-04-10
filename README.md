@@ -1,5 +1,5 @@
 <h1 align='center'>Impacta Discord Bot</h1>
-<p>Bot criado para ajudar na moderação e orgnanização de Servidor do Discord.</p>
+<p>Bot criado para ajudar na moderação e organização de Servidor do Discord.</p>
 <p><b>Plataforma:</b> <i>Telegram</i></p>
 
 <hr>
