@@ -6,26 +6,33 @@ const client = new Discord.Client({
     intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_PRESENCES"]
 });
 
+if (!process.env.PREFIX) {
+    console.error('Você não definiu a variavel de ambiente do prefixo!')
+    process.exit();
+}
+
 // Command Handler
 client.commands = new Discord.Collection();
-
 fs.readdir("./comandos/", (err, files) => {
-    if (err) return console.error('Pasta de comandos não encontrada');
+    if (err) return console.error('Pasta de comandos não foi carregada');
 
     let arquivosjs = files.filter(f => f.split(".").pop() == "js");
     arquivosjs.forEach((f, i) => {
         let command = require(`./comandos/${f}`);
         let commandName = f.slice(0, -3);
 
-        client.commands.set(command?.help?.name ?? commandName, command);
-        console.log(`Comando ${commandName} carregado`);
+        if (command?.help?.name) {
+            client.commands.set(command.help.name, command);
+            console.log(`Comando ${commandName} carregado`);
+        } else {
+            console.log(`Comando ${commandName} não foi carregado corretamente`);
+        }
     });
-    console.log(`${arquivosjs.length} comandos carregados com sucesso!`)
 });
 
 // Event Handler
 fs.readdir("./eventos/", (err, files) => {
-    if (err) return console.error('Pasta de eventos não encontrada');
+    if (err) return console.error('Pasta de eventos não foi carregada');
 
     let arquivosjs = files.filter(f => f.split(".").pop() == "js");
     arquivosjs.forEach((f, i) => {
@@ -39,7 +46,6 @@ fs.readdir("./eventos/", (err, files) => {
             console.error(`Não foi possível carregar o evento ${eventName}`)
         }
     });
-    console.log(`${arquivosjs.length} eventos carregados com sucesso!`)
 });
 
 client.login(process.env.DISCORD_TOKEN)
