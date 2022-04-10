@@ -10,7 +10,7 @@ module.exports = async (client, message) => {
     if (message.channel.type == "dm") return;
 
     let prefix = process.env.PREFIX;
-    if (message.content[0] != prefix) return;
+    if (message.content[0] != prefix || message.content.length == 1) return;
 
     let arquivocmd = client.commands.get(command.slice(prefix.length));
     let arquivoHelp = arquivocmd?.help ?? null;

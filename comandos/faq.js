@@ -4,7 +4,7 @@ module.exports.run = (client, message, args) => {
     const embed = new Discord.MessageEmbed()
     .setColor('6d6ee8')
     .setTitle('Perguntas frequentes - FAQ')
-    .setThumbnail(`${client.user.avatarURL({ format: 'png' })}?size=1024`)
+    .setThumbnail(`${client.user.avatarURL({ format: 'png' })}`)
     .setDescription('A Faculdade Impacta Tecnologia é uma instituição brasileira de ensino superior com foco em tecnologia da informação e gestão empresarial.')
     .addField('Onde é localizado o campus?', 'No bairro da Barra Funda, na cidade de São Paulo.')
     .addField('Quais modalidades disponíveis?', 'EAD e Presencial *(Consultar a grade do curso)')
