@@ -12,7 +12,7 @@ module.exports.run = (client, message, args) => {
 }
 
 module.exports.help = {
-    name: "contato",
+    name: "cursos",
     roles: [],
     log: false
 };
