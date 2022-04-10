@@ -6,7 +6,7 @@ module.exports.run = (client, message, args) => {
 }
 
 module.exports.help = {
-    name: "say",
+    name: "anunciar",
     roles: ['960205837094232114'],
     log: true
 };
