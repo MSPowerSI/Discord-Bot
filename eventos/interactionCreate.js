@@ -1,6 +1,8 @@
 const Discord = require('discord.js')
 
 module.exports = async (client, interaction) => {
+  if (!interaction.isButton()) return;
+
   if (interaction.customId == "open-ticket") {
     if (client.guilds.cache.get(interaction.guildId).channels.cache.find(c => c.topic == interaction.user.id)) {
       return interaction.reply({
