@@ -21,8 +21,10 @@ module.exports.run = (client, message, args) => {
 
     const guildMember = message.guild.members.cache.get(user.id);
     guildMember.timeout((60 * 1000) * tempo, reason)
-        .then(() => message.reply(`${user.username} foi castigado por ${tempo} ${tempo == 1 ? 'minuto' : 'minutos'} pelo motivo: ${reason}\n Por: ${message.author}`))
+        .then(() => message.channel.send(`${user.username} foi castigado por ${tempo} ${tempo == 1 ? 'minuto' : 'minutos'} pelo motivo: ${reason}\n Por: ${message.author}`))
         .catch(() => message.reply(`Erro inesperado.`));
+
+    message.delete();
 }
 
 module.exports.help = {
